@@ -33,11 +33,7 @@ func main() {
 	//Storing all log messages in that file, so server can run in the background
 	//log.SetOutput(logfile)
 
-	//IF YOU WANT TO USE PROXY
-	//proxyUrl, err := url.Parse(ProxyAddress)
-	//http.DefaultTransport = &http.Transport{Proxy: http.ProxyURL(proxyUrl)}
 	//Connect to the database
-
 	database, err := db.ConnectToPostgres(os.Getenv("connString"))
 	API := api.New(database)
 
