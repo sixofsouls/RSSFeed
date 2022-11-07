@@ -1,0 +1,12 @@
+{
+   "rss":[
+      "https://habr.com/ru/rss/hub/go/all/?fl=ru",
+      "https://habr.com/ru/rss/best/daily/?fl=ru",
+      "http://static.feed.rbc.ru/rbc/logical/footer/news.rss",
+      "https://www.svoboda.org/api/z-pqpiev-qpp",
+      "https://www.golosameriki.com/api/zkivremjvq",
+      "https://meduza.io/rss/all",
+      "https://www.kommersant.ru/RSS/news.xml"
+   ],
+   "request_period": 5
+}

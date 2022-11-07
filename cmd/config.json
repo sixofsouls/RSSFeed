@@ -1,0 +1,8 @@
+{
+   "rss":[
+      "https://habr.com/ru/rss/hub/go/all/?fl=ru",
+      "https://habr.com/ru/rss/best/daily/?fl=ru",
+      "http://static.feed.rbc.ru/rbc/logical/footer/news.rss"
+   ],
+   "request_period": 15
+}
