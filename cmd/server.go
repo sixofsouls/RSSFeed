@@ -48,7 +48,7 @@ func main() {
 	// Launching server
 	go func() {
 		log.Println(time.Now().Format(time.RFC1123), " - Server start")
-		err := http.ListenAndServe(":8080", API.Router())
+		err := http.ListenAndServe(":80", API.Router())
 		if err != nil {
 			log.Fatal(err)
 		}
