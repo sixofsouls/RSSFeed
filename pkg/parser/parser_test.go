@@ -5,11 +5,6 @@ import (
 	"testing"
 )
 
-var (
-	database = db.DB{}
-	post     = db.Post{}
-)
-
 func TestRRSParser(t *testing.T) {
 	type args struct {
 		address string

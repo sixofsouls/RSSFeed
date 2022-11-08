@@ -35,6 +35,9 @@ func main() {
 
 	//Connect to the database
 	database, err := db.ConnectToPostgres(os.Getenv("connString"))
+	if err != nil {
+		log.Fatal(err)
+	}
 	API := api.New(database)
 
 	//Read configuration from config.json
@@ -60,6 +63,8 @@ func main() {
 			select {
 			case gotErr := <-db.ErrCh:
 				log.Printf("\nError: %v", gotErr)
+			default:
+				return
 			}
 		}
 	}()
@@ -73,16 +78,9 @@ func main() {
 			go func(val string) {
 				defer wg.Done()
 				log.Println(time.Now().Format(time.RFC1123), " - Reading RSS Feed:", value)
-				parse, errCh := parser.RRSParser(value)
-				if errCh != nil {
-					log.Fatal(err)
-				}
-				err := database.WriteData(parse)
-				if err != nil {
-					log.Fatal(err)
-				}
-				log.Println(time.Now().Format(time.RFC1123), " - Database updated for RSS Feed:", value)
-
+				parse, _ := parser.RRSParser(value)
+				database.WriteData(parse)
+				log.Println(time.Now().Format(time.RFC1123), " - Done with:", value)
 			}(value)
 		}
 		wg.Wait()

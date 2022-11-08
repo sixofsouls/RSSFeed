@@ -9,7 +9,7 @@ import (
 )
 
 // ErrCh channel for errors across entire application
-var ErrCh = make(chan error)
+var ErrCh = make(chan error, 10)
 
 // DB structure for postgres pool
 type DB struct {
