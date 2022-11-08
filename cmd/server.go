@@ -56,8 +56,11 @@ func main() {
 
 	// Scanning for errors
 	go func() {
-		for errVal := range db.ErrCh {
-			log.Printf("Error: %v", errVal)
+		for {
+			select {
+			case gotErr := <-db.ErrCh:
+				log.Printf("\nError: %v", gotErr)
+			}
 		}
 	}()
 
